@@ -2,13 +2,40 @@ group 'com.mwaltman'
 version '0.0.1-a'
 
 apply plugin: 'java'
+apply plugin: 'idea'
 
-sourceCompatibility = 1.8
+test {
+    dependsOn 'cleanTest'
+
+    useTestNG()
+
+    testLogging.showStandardStreams = true
+
+    systemProperty 'selenium.driver.browser',   'Chrome'
+    systemProperty 'selenium.driver.host',      'localhost'
+    systemProperty 'selenium.driver.port',      '4744'
+
+    minHeapSize = '768m'
+    maxHeapSize = '768m'
+    jvmArgs '-Xss256k'
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    String seleniumVersion      = '3.6.0'
+    String chromeDriverVersion  = '3.6.0'
+    String firefoxDriverVersion = '3.6.0'
+    String testNGVersion        = '6.10'
+    String hamcrestVersion      = '1.3'
+    String hamcrestJavaVersion  = '2.0.0.0'
+
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: chromeDriverVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: firefoxDriverVersion
+    compile group: 'org.testng', name: 'testng', version: testNGVersion
+    compile group: 'org.hamcrest', name: 'hamcrest-all', version: hamcrestVersion
+    compile group: 'org.hamcrest', name: 'java-hamcrest', version: hamcrestJavaVersion
 }
