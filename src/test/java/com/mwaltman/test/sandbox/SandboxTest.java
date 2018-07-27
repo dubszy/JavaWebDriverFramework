@@ -1,5 +1,6 @@
 package com.mwaltman.test.sandbox;
 
+import com.mwaltman.test.common.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.log4testng.Logger;
 
@@ -7,14 +8,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-public class SandboxTest {
-
-    private static final Logger log = Logger.getLogger(SandboxTest.class);
+public class SandboxTest extends BaseTest {
 
     @Test
     public void sandboxTest() {
+        // Simple Hamcrest assertion (true should not be false)
         assertThat("True should not be false", true, not(is(false)));
 
+        // We won't reach this line if the above assertion fails
         log.info("\n\033[32mIt Works!\033[m\n");
     }
 }
