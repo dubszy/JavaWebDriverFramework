@@ -4,12 +4,17 @@ version '0.0.1-a'
 apply plugin: 'java'
 apply plugin: 'idea'
 
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 test {
     dependsOn 'cleanTest'
 
     useTestNG()
 
-    testLogging.showStandardStreams = true
+    testLogging {
+        events  TestLogEvent.STANDARD_ERROR,
+                TestLogEvent.STANDARD_OUT
+    }
 
     systemProperty 'selenium.driver.browser',   'Chrome'
     systemProperty 'selenium.driver.host',      'localhost'

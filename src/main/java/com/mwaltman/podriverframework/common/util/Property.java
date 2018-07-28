@@ -16,7 +16,6 @@ public enum Property {
     SELENIUM_DRIVER_BROWSER("selenium.driver.browser"),
     SELENIUM_DRIVER_HOST("selenium.driver.host"),
     SELENIUM_DRIVER_PORT("selenium.driver.port"),
-    SELENIUM_DRIVER_PROFILE("selenium.driver.profile"),
 
     // Proxy properties
     PROXY_SERVER("proxy.server");
