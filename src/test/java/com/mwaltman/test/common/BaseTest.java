@@ -1,9 +1,18 @@
 package com.mwaltman.test.common;
 
+import com.mwaltman.podriverframework.common.testng.TestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.log4testng.Logger;
 
+/**
+ * Base test that all tests utilizing this framework should extend.
+ * Provides access to implementations (or ability to supply your own implementations)
+ * of common TestNG methods automatically called throughout test runs.
+ *
+ * @see TestListener For implementations of {@link org.testng.TestListenerAdapter} methods
+ */
+@Listeners(TestListener.class)
 public class BaseTest {
 
     /**
