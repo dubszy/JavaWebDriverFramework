@@ -218,6 +218,32 @@ public class Selector {
         }
     }
 
+    public String[] getCssClasses() {
+        return getAttribute("class").split(" ");
+    }
+
+    public boolean hasCssClasses(String...classes) {
+        if (classes == null || classes.length < 1) {
+            throw new IllegalArgumentException("At least one class name must be specified");
+        }
+
+        boolean classFound = false;
+
+        for (String aClass : classes) {
+            classFound = false;
+            for (String aCssClass : getCssClasses()) {
+                if (aClass.equals(aCssClass)) {
+                    classFound = true;
+                    break;
+                }
+            }
+            if (!classFound) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Whether the first {@link WebElement} found by this Selector's {@link #locator} is currently displayed.
      *
