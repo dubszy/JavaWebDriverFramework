@@ -15,6 +15,7 @@ stage('Pre-build') {
 
 stage('Build and Test') {
     node {
+        sh 'chmod +x gradlew'
         sh './gradlew test'
     }
 }
